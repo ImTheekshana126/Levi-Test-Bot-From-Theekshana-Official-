@@ -34,7 +34,7 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
-from DaisyX import (
+from Levi import (
     ALLOW_EXCL,
     BL_CHATS,
     CERT_PATH,
@@ -56,11 +56,11 @@ from DaisyX import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from DaisyX.modules import ALL_MODULES
-from DaisyX.modules.helper_funcs.alternate import typing_action
-from DaisyX.modules.helper_funcs.chat_status import is_user_admin
-from DaisyX.modules.helper_funcs.misc import paginate_modules
-from DaisyX.modules.helper_funcs.readable_time import get_readable_time
+from Levi.modules import ALL_MODULES
+from Levi.modules.helper_funcs.alternate import typing_action
+from Levi.modules.helper_funcs.chat_status import is_user_admin
+from Levi.modules.helper_funcs.misc import paginate_modules
+from Levi.modules.helper_funcs.readable_time import get_readable_time
 
 PM_START_TEXT = """
 Hey there! My name is *Lisa*, I help you manage your group in an efficient way! 
@@ -116,7 +116,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("DaisyX.modules." + module_name)
+    imported_module = importlib.import_module("Levi.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -354,7 +354,7 @@ def help_button(update, context):
 
 
 @run_async
-def DaisyX_about_callback(update, context):
+def Levi_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
